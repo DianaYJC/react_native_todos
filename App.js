@@ -2,14 +2,19 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
-  const [person,setPerson]=useState({name:"Shuan",age:"50"});
+  const [name,setName]=useState('Shuan');
+  const [age,setAge]=useState('50');
 
   return (
     <View style={styles.container}>
-      <View >
         <Text>Enter Name:</Text>
-        <TextInput style={styles.input}/>
-      </View>
+        <TextInput 
+        placeholder="e.g John Olive" 
+        multiline 
+        onChangeText={(value)=>setName(value)} 
+        style={styles.input}/>        
+        <TextInput placeholder="e.g 30" keyboardType='numeric' onChangeText={(value)=>setAge(value)} style={styles.input}/>       
+        <Text>I am {name} and {age}year old</Text>
     </View>
   );
 }
@@ -23,7 +28,8 @@ const styles = StyleSheet.create({
  input: {
     borderWidth:1,
     borderColor:'#777',
-    margin:2
+    margin:2,
+    width:200
   }
 
 });
